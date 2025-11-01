@@ -1,0 +1,5 @@
+Activation,Final MSE,Relative L2 Error (%),Convergence Epoch,Visual Fit,Gradient Stability
+swish,3.330e-11,0.00,2000,Excellent,Very Stable
+tanh,2.088e-09,0.01,3000,Good,Stable
+sigmoid,2.521e-01,96.03,10000,Acceptable,Oscillatory
+relu,2.493e-01,95.49,--,Poor,Unstable
