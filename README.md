@@ -13,6 +13,7 @@
   <img src="https://img.shields.io/badge/precision-float64-6250d6" alt="float64">
   <img src="https://img.shields.io/badge/runs%20on-CPU-1baf7a" alt="CPU">
   <img src="https://img.shields.io/badge/version-2.0.0-eda100" alt="version">
+  <a href="https://doi.org/10.5281/zenodo.23883211"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.23883211.svg" alt="DOI"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-2a78d6" alt="MIT license"></a>
 </p>
 

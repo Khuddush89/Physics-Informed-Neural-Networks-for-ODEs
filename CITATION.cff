@@ -4,6 +4,11 @@ title: "pinnode: companion code for 'Physics-Informed Neural Networks for Ordina
 version: 2.0.0
 date-released: 2026-11-01
 license: MIT
+doi: 10.5281/zenodo.23883211
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.23883212
+    description: "Version 2.0.0"
 repository-code: "https://github.com/Khuddush89/Physics-Informed-Neural-Networks-for-ODEs"
 keywords:
   - physics-informed neural networks
