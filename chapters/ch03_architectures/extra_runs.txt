@@ -1,0 +1,2 @@
+# Additional runs executed by scripts/run_all.py (one per line)
+soft_vs_hard.py --network chnn --outdir outputs/ch03_architectures/soft_vs_hard_chnn
