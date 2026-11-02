@@ -1,0 +1,23 @@
+{
+  "upload_type": "software",
+  "title": "pinnode: companion code for 'Physics-Informed Neural Networks for Ordinary, Integral and Integro-Differential Equations'",
+  "creators": [
+    {"name": "Georgiev, Svetlin G."},
+    {"name": "Khuddush, Mahammad"},
+    {"name": "Agarwal, Praveen"}
+  ],
+  "description": "Companion code for the book <i>Physics-Informed Neural Networks for Ordinary, Integral and Integro-Differential Equations: Theory, Algorithms and Python Implementations</i> (CRC Press). It contains the shared PyTorch library pinnode and one folder of scripts per chapter, reproducing every example, table and figure of the book in double precision with fixed seeds on a CPU, together with a quick-mode test suite and assignment notebooks.",
+  "license": "MIT",
+  "version": "2.0.0",
+  "keywords": [
+    "physics-informed neural networks",
+    "PINNs",
+    "ordinary differential equations",
+    "ODEs",
+    "integral equations",
+    "integro-differential equations",
+    "time scales",
+    "scientific machine learning",
+    "PyTorch"
+  ]
+}
