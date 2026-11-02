@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 28" width="1200" height="28" role="presentation">
+  <defs>
+  <linearGradient id="dv" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox" spreadMethod="reflect">
+    <stop offset="0.00" stop-color="#22d3ee"/><stop offset="0.25" stop-color="#a78bfa"/><stop offset="0.50" stop-color="#f472b6"/><stop offset="0.75" stop-color="#fbbf24"/><stop offset="1.00" stop-color="#22d3ee"/>
+    <animateTransform attributeName="gradientTransform" type="translate" values="-1 0;1 0;-1 0" dur="8s" repeatCount="indefinite"/>
+  </linearGradient>
+  <filter id="doodle" x="-5%" y="-20%" width="110%" height="140%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="1" result="n">
+      <animate attributeName="seed" values="1;2;3;4" dur="0.48s" calcMode="discrete" repeatCount="indefinite"/>
+    </feTurbulence>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="2.6" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+  <filter id="glow" x="-20%" y="-50%" width="140%" height="200%">
+    <feGaussianBlur stdDeviation="3.2" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter></defs>
+  <path d="M10.0 14.0L17.4 14.9L24.8 15.9L32.1 16.8L39.5 17.7L46.9 18.5L54.2 19.0L61.6 19.4L69.0 19.4L76.4 19.2L83.8 18.6L91.1 17.8L98.5 16.8L105.9 15.6L113.2 14.3L120.6 12.9L128.0 11.7L135.4 10.6L142.8 9.7L150.1 9.0L157.5 8.6L164.9 8.6L172.2 8.8L179.6 9.3L187.0 10.0L194.4 10.8L201.8 11.7L209.1 12.7L216.5 13.6L223.9 14.5L231.2 15.2L238.6 15.8L246.0 16.2L253.4 16.4L260.8 16.5L268.1 16.5L275.5 16.3L282.9 16.1L290.2 15.8L297.6 15.4L305.0 15.0L312.4 14.6L319.8 14.2L327.1 13.8L334.5 13.4L341.9 13.1L349.2 12.7L356.6 12.3L364.0 12.0L371.4 11.7L378.8 11.5L386.1 11.5L393.5 11.5L400.9 11.7L408.2 12.1L415.6 12.7L423.0 13.3L430.4 14.2L437.8 15.1L445.1 16.1L452.5 17.0L459.9 17.9L467.2 18.6L474.6 19.1L482.0 19.4L489.4 19.4L496.8 19.1L504.1 18.5L511.5 17.6L518.9 16.5L526.2 15.3L533.6 14.0L541.0 12.7L548.4 11.4L555.8 10.4L563.1 9.5L570.5 8.9L577.9 8.6L585.2 8.6L592.6 8.9L600.0 9.4L607.4 10.1L614.8 11.0L622.1 11.9L629.5 12.9L636.9 13.8L644.2 14.7L651.6 15.4L659.0 15.9L666.4 16.3L673.8 16.5L681.1 16.5L688.5 16.5L695.9 16.3L703.2 16.0L710.6 15.7L718.0 15.3L725.4 14.9L732.8 14.6L740.1 14.2L747.5 13.8L754.9 13.4L762.2 13.0L769.6 12.6L777.0 12.2L784.4 11.9L791.8 11.7L799.1 11.5L806.5 11.5L813.9 11.6L821.2 11.8L828.6 12.2L836.0 12.8L843.4 13.5L850.8 14.4L858.1 15.3L865.5 16.3L872.9 17.2L880.2 18.0L887.6 18.7L895.0 19.2L902.4 19.4L909.8 19.4L917.1 19.0L924.5 18.3L931.9 17.4L939.2 16.3L946.6 15.0L954.0 13.7L961.4 12.4L968.8 11.2L976.1 10.2L983.5 9.4L990.9 8.8L998.2 8.6L1005.6 8.6L1013.0 9.0L1020.4 9.5L1027.8 10.3L1035.1 11.2L1042.5 12.1L1049.9 13.1L1057.2 14.0L1064.6 14.8L1072.0 15.5L1079.4 16.0L1086.8 16.3L1094.1 16.5L1101.5 16.5L1108.9 16.4L1116.2 16.2L1123.6 15.9L1131.0 15.6L1138.4 15.3L1145.8 14.9L1153.1 14.5L1160.5 14.1L1167.9 13.7L1175.2 13.3L1182.6 12.9L1190.0 12.5" fill="none" stroke="url(#dv)" stroke-width="2.4" stroke-linecap="round"
+        stroke-dasharray="18 9" filter="url(#doodle)"><animate attributeName="stroke-dashoffset" values="0;-270" dur="6s" repeatCount="indefinite"/></path>
+</svg>

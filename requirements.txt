@@ -1,0 +1,12 @@
+# Minimum versions known to work with the companion code.
+# For the exact environment used to produce every number and figure in the book,
+# install requirements-lock.txt instead (see docs/REPRODUCIBILITY.md).
+torch>=2.2
+numpy>=1.26
+scipy>=1.11
+matplotlib>=3.8
+pandas>=2.1
+imageio>=2.31
+pytest>=7.4
+nbformat>=5.9
+mpmath>=1.3

@@ -1,0 +1,35 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the book and (optionally) this software release."
+title: "pinnode: companion code for 'Physics-Informed Neural Networks for Ordinary, Integral and Integro-Differential Equations'"
+version: 2.0.0
+date-released: 2026-11-01
+license: MIT
+repository-code: "https://github.com/Khuddush89/Physics-Informed-Neural-Networks-for-ODEs"
+keywords:
+  - physics-informed neural networks
+  - ordinary differential equations
+  - integral equations
+  - integro-differential equations
+  - scientific machine learning
+  - PyTorch
+authors:
+  - family-names: Georgiev
+    given-names: Svetlin G.
+  - family-names: Khuddush
+    given-names: Mahammad
+    orcid: "https://orcid.org/0000-0002-1236-8334"
+    affiliation: "Department of Mathematics, Vignan's Institute of Information Technology (A), Visakhapatnam 530049, India; School of Sciences, Woxsen University, Hyderabad 502345, Telangana, India"
+  - family-names: Agarwal
+    given-names: Praveen
+preferred-citation:
+  type: book
+  title: "Physics-Informed Neural Networks for Ordinary, Integral and Integro-Differential Equations: Theory, Algorithms and Python Implementations"
+  authors:
+    - family-names: Georgiev
+      given-names: Svetlin G.
+    - family-names: Khuddush
+      given-names: Mahammad
+    - family-names: Agarwal
+      given-names: Praveen
+  publisher:
+    name: "CRC Press"
