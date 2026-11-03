@@ -12,17 +12,19 @@ Wall-clock time of each script (full run, one CPU thread, double precision).
 | ch03_architectures | `feature_conditioning` | Chebyshev/Legendre feature maps: derivative check and conditioning | 0.4 | 1234 |
 | ch03_architectures | `soft_vs_hard` | Airy oscillator: soft vs hard conditions for an IVP and a Robin BVP | 235 | 1234 |
 | ch03_architectures | `soft_vs_hard_chnn` | Airy oscillator: soft vs hard conditions for an IVP and a Robin BVP | 298 | 1234 |
-| ch03_architectures | `well_posedness` | Airy oscillator: unique solvability and conditioning | 0.0 | 1234 |
+| ch03_architectures | `well_posedness` | Airy oscillator: unique solvability and conditioning | < 0.1 | 1234 |
 | ch04_ivp | `logistic_activation_study` | Logistic ODE: activation study, soft vs hard initial condition | 146 | 1234 |
 | ch04_ivp | `lotka_volterra` | Lotka-Volterra system, PINN in log variables with hard ICs | 73 | 1234 |
 | ch04_ivp | `lotka_volterra_T15` | Lotka-Volterra system, PINN in log variables with hard ICs | 83 | 1234 |
-| ch04_ivp | `manual_single_point` | Hand calculation of a PINN loss, gradient and Adam step (y'=y) | 0.3 | 0 |
+| ch04_ivp | `manual_polynomial_networks` | Hand calculation for Chebyshev, Legendre and MLP networks (y' = y) | < 0.1 | 0 |
+| ch04_ivp | `manual_single_point` | Hand calculation of a PINN loss, gradient and Adam step (y'=y) | 0.4 | 0 |
 | ch04_ivp | `third_order_system` | Coupled third-order system: stability analysis and PINN | 64 | 1234 |
 | ch04_ivp | `vanderpol` | van der Pol oscillator (mu=0.5): bounded/power hard ICs vs soft ICs | 135 | 1234 |
 | ch05_bvp | `boundary_layer` | Boundary-layer BVP eps y'' + y' = 1: point sets and a layer-enriched network | 100 | 1234 |
 | ch05_bvp | `duffing_classical` | Duffing-type BVP: collocation, shooting and finite differences (accuracy, time) | 3.7 | 1234 |
 | ch05_bvp | `duffing_pinn` | Duffing-type BVP with mixed conditions: ChNN/MLP PINNs, soft/hard BCs | 109 | 1234 |
 | ch05_bvp | `duffing_reference` | Duffing-type BVP: closed-form solutions, multiplicity, verification | 0.8 | 1234 |
+| ch05_bvp | `manual_bvp` | Hand calculation for a Dirichlet BVP: residuals, collocation system, finite differences | < 0.1 | 0 |
 | ch05_bvp | `resonance_loss_floor` | BVP without solution (y''+y=0, y(0)=0, y(pi)=1): loss floor of PINNs | 24 | 1234 |
 | ch05_bvp | `third_order_system_reference` | Coupled third-order BVP (exercise): solve_bvp reference | 1.3 | 1234 |
 | ch06_tvp | `adjoint_sensitivity` | Adjoint sensitivity of a logistic misfit with one state/adjoint PINN | 22 | 1234 |
@@ -30,16 +32,19 @@ Wall-clock time of each script (full run, one CPU thread, double precision).
 | ch06_tvp | `jerk_tvp` | Third-order TVP: LeNN/MLP with soft or hard terminal conditions | 163 | 1234 |
 | ch06_tvp | `lqr_forward_backward` | LQR forward-backward Hamiltonian system solved by one PINN | 39 | 1234 |
 | ch06_tvp | `lqr_riccati` | LQR Riccati terminal value problem (double integrator) by a PINN | 25 | 1234 |
+| ch06_tvp | `manual_tvp` | Hand calculation for a second-order TVP and its time reversal | < 0.1 | 0 |
 | ch06_tvp | `pendulum_tvp` | Damped pendulum TVP: LeNN with soft and hard terminal conditions | 109 | 1234 |
 | ch06_tvp | `system_tvp` | Two coupled third-order TVPs: backward reference and hard-constrained PINN | 222 | 1234 |
 | ch06_tvp | `tvp_conditioning` | Backward amplification for TVPs: classical solver and PINN | 36 | 1234 |
 | ch07_integral_equations | `filon_weights` | Filon weights: stable evaluation and accuracy on a model integral | 0.5 | 1234 |
 | ch07_integral_equations | `fredholm_degenerate` | Fredholm IE with degenerate kernel x t: quadrature vs auxiliary scalar | 28 | 1234 |
 | ch07_integral_equations | `helmholtz_filon` | 1D Helmholtz-type IE (k=10, lam=6): SIREN PINN with Filon panels | 30 | 1234 |
+| ch07_integral_equations | `manual_nystrom` | Hand calculation: Nystrom with one and two Gauss nodes, PINN quadrature residual | < 0.1 | 0 |
 | ch07_integral_equations | `volterra_apinn` | Volterra IE u = 1 + 2 int_0^x t u dt: A-PINN vs direct quadrature | 38 | 1234 |
 | ch08_integro_differential | `convolution` | Convolution IDE: direct quadrature vs internal variable (hard ICs) | 62 | 1234 |
 | ch08_integro_differential | `delay_reference` | Delay IDE of the exercise: method-of-steps reference | 0.3 | 0 |
 | ch08_integro_differential | `fredholm` | Fredholm IDE: global quadrature vs moment variable (hard IC) | 33 | 1234 |
+| ch08_integro_differential | `manual_ide` | Hand calculation: trapezoidal methods and PINN residual for a convolution IDE | < 0.1 | 0 |
 | ch08_integro_differential | `volterra_growth` | Volterra IDE on [0,5]: rapid growth, scaling of the unknowns | 148 | 1234 |
 | ch08_integro_differential | `volterra_short` | Volterra IDE on [0,2]: direct quadrature vs A-PINN (hard ICs) | 68 | 1234 |
 | ch09_training_diagnostics | `causality` | Harmonic oscillator on long intervals: vanilla vs causal weights vs time-marching | 467 | 1234 |
@@ -60,6 +65,7 @@ Wall-clock time of each script (full run, one CPU thread, double precision).
 | ch11_inverse_problems | `logistic_parameter_id` | Logistic ODE: identify (r, K) from noisy data, PINN vs least squares | 106 | 1234 |
 | ch11_inverse_problems | `logistic_weight_study` | Logistic inverse PINN: effect of the residual weight lam_r | 45 | 1234 |
 | ch11_inverse_problems | `lotka_volterra_partial` | Lotka-Volterra observed through the prey only: parameters and predator | 223 | 1234 |
+| ch11_inverse_problems | `manual_inverse` | Hand calculation: Gauss-Newton versus the inverse-PINN loss and gradient | < 0.1 | 0 |
 | ch11_inverse_problems | `source_identification` | Unknown source f(t) in y' = -k y + f(t) from noisy data (two networks) | 109 | 1234 |
 | ch11_inverse_problems | `uq_ensembles` | Logistic inverse problem: ensembles vs Gauss-Newton vs Metropolis | 101 | 1234 |
 | ch11_inverse_problems | `volterra_parameter_id` | Volterra equation u = 1 + lam int_0^x s u ds: identify lam from noisy data | 230 | 1234 |

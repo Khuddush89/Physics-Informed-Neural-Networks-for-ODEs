@@ -54,4 +54,4 @@ several chapters report statistics over seeds explicitly.
 ## Archiving
 
 Releases are archived on Zenodo (metadata in `.zenodo.json`), so that the code version used
-for the book (v2.0.0) remains available under a persistent DOI.
+for the book (v2.1.0) remains available under a persistent DOI.

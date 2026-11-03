@@ -13,6 +13,7 @@ The tables of the chapter are generated from these files by `make_tables.py`.
 
 | script | book section / figure / table | what it does | runtime (full run, 1 core) |
 |---|---|---|---|
+| `manual_bvp.py` | Sec. "A boundary value problem computed by hand" | `y'' = -pi^2 sin(pi t)`, `y(0) = y(1) = 0`, trial `t(1-t) N`: N, N', N'', residuals and loss at three CGL points, gradients (hand formulas vs autograd), output weights from the 3 x 3 collocation system, finite differences with h = 1/4 and 1/8 | < 1 s |
 | `duffing_reference.py` | Sec. "Closed-form solutions", Table `bvp:tab:roots` | closed-form solutions `y = A cn(w(t - pi), m)` of `y'' + y + 0.1 y^3 = 0`, `y(0) = 1`, `y'(pi) = 0`; all roots with `|A| <= 12`; checks against `solve_bvp` and shooting; fold of the small-amplitude branch at `eps_c` | a few seconds |
 | `duffing_pinn.py` | Sec. "Worked example: a Duffing-type BVP", Fig. `bvp:fig:duffing`, Table `bvp:tab:duffing` | ChNN and MLP PINNs, soft (lambda_bc = 1, 100) and hard (constrained expression) boundary conditions; a run started from a fitted guess converges to the second solution | about 2.2 min CPU |
 | `duffing_classical.py` | Sec. "Comparison with classical methods", Table `bvp:tab:classical` | collocation (`solve_bvp`), shooting (DOP853 + Brent) and finite differences + Newton: errors and CPU times | about 1 s CPU (all repeats) |

@@ -19,6 +19,7 @@ predictions, `figures/*.pdf|png`). All numbers quoted in the book come from thes
 
 | script | book section / figure / table | what it does | runtime (full run, 1 core) |
 |---|---|---|---|
+| `manual_nystrom.py` | Sec. "An integral equation computed by hand" | Nystrom solutions of u = 1 + (1/2) int x t u dt with one and two Gauss nodes; PINN quadrature residual, loss and gradient at initialization; output weights with zero residual for Q = 1 and Q = 2 (inherited quadrature error) | < 1 s |
 | `fredholm_degenerate.py` | Sec. "A Fredholm equation with a degenerate kernel"; Fig. `ie:fig:fredholm`, Table `ie:tab:fredholm` | u = 1 + (1/2) int_0^1 x t u dt (exact 1 + 3x/10): PINN with Gauss quadrature (Q = 2 and Q = 1) and with an auxiliary scalar (3 seeds each for Q = 2); Nystrom comparison; a posteriori bound | 2.9 min |
 | `volterra_apinn.py` | Sec. "Volterra equations", worked example; Fig. `ie:fig:volterra`, Table `ie:tab:volterra` | u = 1 + 2 int_0^x t u dt (exact e^{x^2}): A-PINN with hard constraints vs direct quadrature (8 mapped Gauss nodes); trapezoidal rule comparison; Gronwall bound | 5.1 min |
 | `helmholtz_filon.py` | Sec. "Oscillatory kernels"; Fig. `ie:fig:helmholtz`, Table `ie:tab:helmholtz` | u = 1 + 6 (i/20) int_0^1 e^{10 i abs(x-t)} u dt with closed-form solution: SIREN PINN with Filon panel quadrature (20 panels); Nystrom with global Gauss-Legendre, Simpson and Filon panels; a posteriori bound | 2.8 min |
