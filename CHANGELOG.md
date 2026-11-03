@@ -1,5 +1,26 @@
 # Changelog
 
+## 2.1.0 (2026-11-04) - worked hand calculations
+
+* New scripts that reproduce, and check against automatic differentiation, every number of the
+  hand calculations in the book:
+  `chapters/ch05_bvp/manual_bvp.py` (second derivatives of a hard-constrained trial function,
+  linear collocation system for the output layer, finite differences),
+  `chapters/ch06_tvp/manual_tvp.py` (terminal trial function, time reversal, backward map),
+  `chapters/ch07_integral_equations/manual_nystrom.py` (Nystrom with one and two Gauss nodes,
+  PINN quadrature residual, inherited quadrature error),
+  `chapters/ch08_integro_differential/manual_ide.py` (trapezoidal direct quadrature and
+  internal-variable steps, convergence, PINN residual with Gauss nodes on [0, x]),
+  `chapters/ch11_inverse_problems/manual_inverse.py` (Gauss-Newton iterations versus the
+  inverse-PINN loss and parameter gradient).
+* `chapters/ch04_ivp/manual_polynomial_networks.py` uses the common `Example` interface
+  (results in `outputs/ch04_ivp/manual_polynomial_networks/`).
+* `chapters/ch04_ivp/manual_single_point.py` also computes the numbers of the remark on the
+  sensitivity of a hand calculation (sign slip, four-digit arithmetic).
+* Corrected descriptions: the Shishkin mesh of `chapters/ch05_bvp/boundary_layer.py` has
+  M/2 - 1 intervals on [tau, 1] (the points were already correct); timings below 0.05 s are
+  reported as "< 0.1" in the runtime table.
+
 ## 2.0.0 (2026-11-01) - companion code for the restructured book
 
 * One library (`pinnode/`) shared by every example: architectures (MLP, Chebyshev, Legendre,

@@ -17,6 +17,7 @@ call with `--resume` then assembles the tables and figures from the checkpoints.
 
 | script | book section / figure / table | what it does | runtime (full run, 1 core) |
 |---|---|---|---|
+| `manual_polynomial_networks.py` | Sec. "The same calculation for Chebyshev and Legendre networks" | the hand calculation repeated for Chebyshev (first and second kind) and Legendre features of degree one: forward pass, residual, gradients and one Adam step, checked against `torch.optim.Adam` | < 1 s |
 | `manual_single_point.py` | Sec. "A PINN computed by hand", Table `ivp:tab:manual` | forward pass, derivative, residual, loss, gradient and one Adam step for a 2-neuron network on `y' = y`, by closed-form formulas and by PyTorch; asserts agreement | < 1 s |
 | `logistic_activation_study.py` | Sec. "First-order equations: the logistic equation", Fig. `ivp:fig:logistic`, Table `ivp:tab:logistic` | soft vs hard initial condition x four activations (tanh, sigmoid, ReLU, swish); minimum of the loss over affine functions (plateau); errors after Adam and after L-BFGS | about 3.5 min CPU (8 trainings) |
 | `vanderpol.py` | Sec. "Higher-order equations: the van der Pol oscillator", Fig. `ivp:fig:vdp`, Table `ivp:tab:vdp` | van der Pol, mu = 0.5, on [0, 10]; trial solutions `1 + phi(t) N(t)` with `phi = t^2/(1+t^2)` and `phi = t^2`, and soft initial conditions; errors of y and y'; limit-cycle period | about 3 min CPU (3 trainings) |

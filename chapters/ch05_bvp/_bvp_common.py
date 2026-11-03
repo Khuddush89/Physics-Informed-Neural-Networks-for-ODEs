@@ -95,7 +95,7 @@ def layer_exact(t, eps: float):
 
 
 def shishkin_points(M: int, eps: float, sigma: float = 2.0, T: float = 1.0) -> np.ndarray:
-    """Piecewise-uniform (Shishkin) points: M//2 intervals in [0, tau], the rest in [tau, T],
+    """Piecewise-uniform (Shishkin) points: M//2 intervals in [0, tau], M - M//2 - 1 in [tau, T],
     tau = min(T/2, sigma * eps * ln M); M points in total, endpoints included."""
     tau = min(0.5 * T, sigma * eps * np.log(M))
     n1 = M // 2

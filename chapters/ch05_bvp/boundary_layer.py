@@ -15,7 +15,7 @@ M = 64 collocation points placed in three ways:
 
 * uniform points;
 * Chebyshev-Gauss-Lobatto (CGL) points (clustered at both ends);
-* a layer-adapted Shishkin mesh: M/2 intervals on [0, tau], tau = 2 eps ln M, and M/2 on [tau, 1].
+* a layer-adapted Shishkin mesh: M/2 intervals on [0, tau], tau = 2 eps ln M, and M/2 - 1 on [tau, 1].
 
 Trained from scratch, all three end on a wrong function: the network follows the smooth function
 y = t (which satisfies the equation and y(0) = 0) and meets the Robin condition through a
@@ -215,7 +215,7 @@ def main():
                      "hyperparameters": {"net": f"MLP {DEPTH} x {WIDTH} tanh", "M": M, "lambda_bc": LAM_BC,
                                          "adam_iters": ex.pick(4000, 30), "lr": "1e-3 -> 1e-5 (cosine)",
                                          "lbfgs_iters_max": ex.pick(1000, 5),
-                                         "shishkin": "tau = min(1/2, 2 eps ln M), M/2 intervals per part",
+                                         "shishkin": "tau = min(1/2, 2 eps ln M), M/2 intervals on [0, tau], M/2 - 1 on [tau, 1]",
                                          "test_grid": "1001 uniform points on [0, 1]"},
                      "runs": rows, "solve_bvp_tol1e-8": adapt})
     if ex.args.no_figures or ex.args.only:

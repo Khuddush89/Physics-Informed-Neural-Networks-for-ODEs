@@ -86,10 +86,69 @@ def fmt_e(x):
     return "--" if not (isinstance(x, float) and math.isfinite(x)) else f"{x:.1e}"
 
 
-def fmt_t(x):
+def fmt_t(x, latex=False):
     if not (isinstance(x, (int, float)) and math.isfinite(x)):
         return "--"
+    if x < 0.05:
+        return "$<0.1$" if latex else "< 0.1"
     return f"{x:.0f}" if x >= 10 else f"{x:.1f}"
+
+
+# Typeset descriptions for the LaTeX table of the book (the scripts keep plain-text ones).
+TEX_DESCRIPTIONS = {
+    "first_pinn": r"First PINN for $y'=-y+\sin t$: soft vs.\ hard initial condition",
+    "aposteriori_bounds": r"A posteriori residual-based error bounds versus true PINN errors",
+    "architecture_comparison": r"Airy BVP: MLP, ChNN, LeNN, Fourier features and SIREN (hard Dirichlet conditions)",
+    "soft_vs_hard": r"Airy oscillator: soft vs.\ hard conditions for an IVP and a Robin BVP (Fourier features)",
+    "soft_vs_hard_chnn": r"The same with a ChNN (option \code{--network chnn})",
+    "logistic_activation_study": r"Logistic ODE: activation study, soft vs.\ hard initial condition",
+    "lotka_volterra": r"Lotka--Volterra system on $[0,6]$, PINN in log variables with hard initial conditions",
+    "lotka_volterra_T15": r"The same on $[0,15]$ (option \code{--T 15})",
+    "manual_polynomial_networks": r"Hand calculation for Chebyshev, Legendre and MLP networks ($y'=y$)",
+    "manual_single_point": r"Hand calculation of a PINN loss, gradient and Adam step ($y'=y$)",
+    "vanderpol": r"van der Pol oscillator ($\mu=0.5$): hard (bounded or power multiplier) vs.\ soft initial conditions",
+    "boundary_layer": r"Boundary-layer BVP $\varepsilon y''+y'=1$: point sets and a layer-enriched network",
+    "duffing_pinn": r"Duffing-type BVP with mixed conditions: ChNN and MLP PINNs, soft and hard conditions",
+    "resonance_loss_floor": r"BVP without solution ($y''+y=0$, $y(0)=0$, $y(\pi)=1$): loss floor of PINNs",
+    "jerk_tvp": r"Third-order TVP: LeNN and MLP with soft or hard terminal conditions",
+    "lqr_forward_backward": r"LQR forward--backward Hamiltonian system solved by one PINN",
+    "fredholm_degenerate": r"Fredholm IE with degenerate kernel $xt$: quadrature vs.\ auxiliary scalar",
+    "helmholtz_filon": r"Helmholtz-type IE ($k=10$, $\lambda=6$): SIREN PINN with Filon panels",
+    "manual_nystrom": r"Hand calculation: Nystr\"om method with one and two Gauss nodes, PINN quadrature residual",
+    "volterra_apinn": r"Volterra IE $u=1+2\int_0^x tu\,\mathrm{d}t$: A-PINN vs.\ direct quadrature",
+    "convolution": r"Convolution IDE: direct quadrature vs.\ internal variable (hard initial conditions)",
+    "fredholm": r"Fredholm IDE: global quadrature vs.\ moment variable (hard initial condition)",
+    "volterra_short": r"Volterra IDE on $[0,2]$: direct quadrature vs.\ A-PINN (hard initial conditions)",
+    "causality": r"Harmonic oscillator on long intervals: vanilla PINN, causal weights, time-marching",
+    "diagnostics": r"Validation residual vs.\ training loss; residual-based adaptive refinement",
+    "lorenz_chaos": r"Lorenz system: Lyapunov exponent, twin experiment, global and time-marching PINNs",
+    "loss_imbalance": r"BVP $y''=f$ with large $\omega$: fixed, rescaled, annealed and self-adaptive weights, hard conditions",
+    "optimizers": r"Adam, Adam$\to$L-BFGS and L-BFGS in double and single precision (nonlinear pendulum)",
+    "spectral_bias": r"Spectral bias: $\tanh$ MLP, Fourier features and SIREN for $y'=f$",
+    "stiffness": r"Stiff linear IVP $y'=-\lambda(y-\cos t)$: PINN variants vs.\ Radau",
+    "trivial_solutions": r"Logistic ODE: attraction of the equilibrium $y=0$ and remedies",
+    "bvp_bratu": r"Bratu BVP: collocation, shooting and finite differences vs.\ PINN",
+    "integral_equations": r"Fredholm, Volterra and IDE: quadrature methods vs.\ PINNs",
+    "ivp_logistic": r"Logistic ODE: classical solvers vs.\ PINN (work--precision)",
+    "ivp_stiff": r"Stiff linear system (stiffness ratio $1000$): classical solvers vs.\ PINN",
+    "ivp_vanderpol": r"van der Pol oscillator ($\mu=0.5$): classical solvers vs.\ PINN (work--precision)",
+    "parametric_logistic": r"Parametric logistic family: one PINN vs.\ repeated classical solves",
+    "residual_certificate": r"A posteriori residual bounds for a PINN and an RK45 interpolant",
+    "logistic_parameter_id": r"Logistic ODE: identify $(r,K)$ from noisy data, PINN vs.\ least squares",
+    "logistic_weight_study": r"Logistic inverse PINN: effect of the residual weight $\lambda_r$",
+    "lotka_volterra_partial": r"Lotka--Volterra system observed through the prey only: parameters and predator",
+    "manual_inverse": r"Hand calculation: Gauss--Newton iteration vs.\ inverse-PINN loss and gradient",
+    "source_identification": r"Unknown source $f(t)$ in $y'=-ky+f(t)$ from noisy data (two networks)",
+    "uq_ensembles": r"Logistic inverse problem: ensembles, Gauss--Newton and Metropolis sampling",
+    "volterra_parameter_id": r"Volterra equation $u=1+\lambda\int_0^x su\,\mathrm{d}s$: identify $\lambda$ from noisy data",
+    "dae_nonlinear_resistor": r"Index-1 DAE $y'=-z$, $0=z+z^3-y$: hard (Newton layer) vs.\ penalty",
+    "delay_method_of_steps": r"DDE $y'(t)=-y(t-1)$: global PINN vs.\ method of steps",
+    "fractional_relaxation": r"Caputo relaxation $D^\alpha y=-y$: fPINN with the L1 scheme",
+    "lane_emden": r"Lane--Emden equation $y''+(2/x)y'+y^m=0$: trial solution $1+(x/L)^2N(x)$",
+    "stiff_robertson": r"Robertson kinetics on $[0,40]$: log-time PINN, vanilla PINN, Radau and BDF",
+    "sturm_liouville": r"Sturm--Liouville eigenpairs: Rayleigh-quotient selection, trainable eigenvalue, deflation",
+    "time_scales": r"$y^\Delta=py$ on $\mathbb{R}$, $\mathbb{Z}$ and $\mathbb{P}_{1,1}$: one PINN for continuous, discrete and hybrid time",
+}
 
 
 def tex_escape(s: str) -> str:
@@ -131,7 +190,8 @@ def main():
                  r"\bottomrule \endfoot"]
         for r in ex_rows:
             ch = int(r["chapter"].split("_")[0].replace("ch", ""))
-            lines.append(f"{ch} & \\code{{{r['example']}}} & {tex_escape(r['description'])} & {fmt_t(r['wall_time_s'])}\\\\")
+            desc = TEX_DESCRIPTIONS.get(r["example"], tex_escape(r["description"]))
+            lines.append(f"{ch} & \\code{{{r['example']}}} & {desc} & {fmt_t(r['wall_time_s'], latex=True)}\\\\")
         lines += [r"\end{longtable}", r"\end{small}"]
         Path(args.latex).parent.mkdir(parents=True, exist_ok=True)
         Path(args.latex).write_text("\n".join(lines) + "\n")

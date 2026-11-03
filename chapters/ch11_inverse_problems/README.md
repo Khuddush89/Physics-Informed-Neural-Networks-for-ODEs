@@ -7,6 +7,7 @@ not meaningful); `--resume` reuses fits cached by an interrupted run (identical 
 
 | script | book section / figure / table | what it does | CPU time (full run, 1 core) |
 |---|---|---|---|
+| `manual_inverse.py` | Sec. "An inverse problem computed by hand" | y' = -p y with data (0.62, 0.36) at t = (0.5, 1): Gauss-Newton iterations for output least squares; inverse PINN loss, gradient with respect to p and one Adam step at the initialization | < 1 s |
 | `logistic_parameter_id.py` | Sec. 11.2, Fig. `inv:fig:logistic`, Tab. `inv:tab:logistic` | logistic ODE, (r, K) from 15 noisy points at 4 noise levels x 5 data sets: inverse PINN vs `least_squares` + `solve_ivp`; practical identifiability (early-window data) | about 2.7 min |
 | `logistic_weight_study.py` | Sec. 11.1/11.7, Fig. `inv:fig:weights` | effect of the residual weight lam_r (1e-4 ... 1e3): parameter errors, discrepancy principle, validation misfit | about 1.0 min |
 | `lotka_volterra_partial.py` | Sec. 11.3, Fig. `inv:fig:lv`, Tab. `inv:tab:lv` | Lotka-Volterra observed through the prey only (log-normal noise): parameters and unobserved predator; least squares from the same and from 20 random initial guesses; structural non-identifiability when y(0) is unknown | about 4.2 min |

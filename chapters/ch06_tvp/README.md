@@ -15,6 +15,7 @@ original run).
 
 | script | book section / figure / table | what it does | runtime (full run, 1 core) |
 |---|---|---|---|
+| `manual_tvp.py` | Sec. "A terminal value problem computed by hand" | `y'' + y = 0`, `y(1) = cos 1`, `y'(1) = -sin 1`, terminal trial function: residuals and loss at 0, 1/2, 1; the reflected IVP with negated first-layer weights gives the same residuals and loss (gradient w.r.t. w changes sign); backward map exp(-A) | < 1 s |
 | `tvp_conditioning.py` | Sec. 6.1, Fig. `tvp:fig:conditioning` | backward vs forward amplification for `y'' + (1+kappa) y' + kappa y = 0` (matrix exponential, perturbed DOP853 integration), TVP-PINN vs IVP-PINN with identical settings, backward sensitivity of the pendulum TVP | 3 min of training |
 | `pendulum_tvp.py` | Sec. 6.3.1, Fig. `tvp:fig:pendulum`, Tables `tvp:tab:examples`, `tvp:tab:runtime` | damped pendulum TVP, Legendre network with soft and hard terminal conditions, backward DOP853 reference | 9 min of training |
 | `jerk_tvp.py` | Sec. 6.3.2, Fig. `tvp:fig:jerk`, Tables `tvp:tab:examples`, `tvp:tab:runtime` | third-order TVP: LeNN (soft) vs MLP (soft) vs MLP with terminal trial function; backward DOP853 and shooting references | 12 min of training |

@@ -86,6 +86,31 @@ def hand_calculation():
     return out
 
 
+def sensitivity_examples(hand):
+    """Numbers of the remark on the sensitivity of a hand calculation.
+
+    (a) a sign slip: the term -2 v_1 w_1 h_1 dh_1/dw_1 in dy'/dw_1 taken with a plus sign;
+    (b) the forward pass carried out with four significant digits.
+    """
+    h1, s1 = hand["h"][0], hand["one_minus_h2"][0]
+    dr_slip = V[0] * s1 * (1.0 + 2.0 * W[0] * T1 * h1 - T1)
+    dL_slip = 2.0 * hand["residual"] * dr_slip
+
+    def r4(x):
+        return float(f"{x:.4g}")
+
+    h = [r4(np.tanh(z)) for z in W * T1 + B]
+    s = [r4(1.0 - hk ** 2) for hk in h]
+    y = r4(V[0] * h[0] + V[1] * h[1] + C)
+    yp = r4(V[0] * W[0] * s[0] + V[1] * W[1] * s[1])
+    r = r4(yp - y)
+    y0 = r4(V[0] * r4(np.tanh(B[0])) + V[1] * r4(np.tanh(B[1])) + C)
+    return {"dr_dw1_sign_slip": dr_slip, "dL_dw1_sign_slip": dL_slip,
+            "relative_change": abs(dr_slip - hand["dr"][0]) / abs(hand["dr"][0]),
+            "four_digits": {"h": h, "s": s, "y": y, "yp": yp, "residual": r, "L_r": r4(r * r),
+                            "y0": y0, "L_ic": r4((y0 - Y0) ** 2)}}
+
+
 def torch_calculation():
     """The same quantities with PyTorch autograd and torch.optim.Adam."""
     torch.set_default_dtype(torch.float64)
@@ -168,8 +193,14 @@ def main():
                    "dL_dtheta": hand["grad"], "dL_dtheta_torch": ad["grad"],
                    "theta_after_adam": hand["theta_new"], "theta_after_adam_torch": ad["theta_new"]},
                   "gradient_table")
+    sens = sensitivity_examples(hand)
+    print("\nRemark (sensitivity): sign slip dr/dw1 =", f"{sens['dr_dw1_sign_slip']:.6g}",
+          " dL/dw1 =", f"{sens['dL_dw1_sign_slip']:.6g}",
+          f" ({100 * sens['relative_change']:.1f} % change)")
+    print("  four significant digits:", sens["four_digits"])
     ex.save_results({
         "problem": {"ode": "y' = y", "y0": Y0, "t1": T1, "exact_y_t1": float(np.exp(T1))},
+        "sensitivity_remark": sens,
         "parameters": {"w": W, "b": B, "v": V, "c": C},
         "adam": ADAM,
         "hand": {k: (v.tolist() if isinstance(v, np.ndarray) else v) for k, v in hand.items()},

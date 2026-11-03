@@ -14,6 +14,7 @@ measured on a uniform grid of 1001 points.
 
 | script | book section / figure / table | what it does | runtime (full run, 1 core) |
 |---|---|---|---|
+| `manual_ide.py` | Sec. "An integro-differential equation computed by hand" | u' = u + ∫₀ˣ e^{-(x-t)} u dt: two steps (h = 1/2) of the trapezoidal direct quadrature method and of the trapezoidal rule for the internal-variable system, convergence for h = 1/2 ... 1/32; PINN quadrature residual at x = 1/2 and 1 | < 1 s |
 | `volterra_short.py` | Sec. "Quadrature residual versus auxiliary variable on [0,2]", Fig. `ide:fig:volterra`, Table `ide:tab:volterra` (top) | Volterra IDE u' = u + ∫₀ˣ t u dt on [0,2]: quadrature PINN (20 Gauss nodes per point) vs A-PINN (u, A); a posteriori residual and residual-to-error bound; trapezoidal method and DOP853 references | about 66 s CPU |
 | `volterra_growth.py` | Sec. "Long intervals and rapidly growing solutions", Remark `ide:rem:bifactor`, Fig. `ide:fig:growth`, Table `ide:tab:volterra` (bottom) | Same IDE on [0,5] (u grows to 1.7e4): unscaled A-PINN, A-PINN after u = e^{x/2} v, A-PINN in logarithmic variables (w, a) = (log u, A/u), quadrature PINN in w, Bi-factorized PINN; classical references | about 3 min CPU |
 | `fredholm.py` | Sec. "Fredholm integro-differential equations", Fig. `ide:fig:fredholm`, Table `ide:tab:fredholm` | u' = 1 + ∫₀¹ x t u dt: global-quadrature PINN vs trainable moment variable with consistency penalty; Nyström method for the integrated equation | about 40 s CPU |
